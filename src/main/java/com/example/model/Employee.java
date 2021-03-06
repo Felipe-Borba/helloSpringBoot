@@ -19,7 +19,6 @@ public class Employee {
     @NotBlank(message = "Name is mandatory")
     private String firstName;
 
-    // TODO: 05/03/2021 tirar essas merda de temporario daqui
     @NotBlank(message = "Last name is mandatory")
     private String lastName;
 
