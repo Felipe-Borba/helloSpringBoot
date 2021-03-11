@@ -1,20 +1,15 @@
 package com.example.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.data.redis.core.RedisHash;
+
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
-@Entity
-@Table(name = "employees")
-public class Employee {
+@RedisHash("Employee")
+public class Employee implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+
+    private String id;
 
     @NotBlank(message = "Name is mandatory")
     private String firstName;
@@ -34,16 +29,15 @@ public class Employee {
         this.emailId = emailId;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public long getId() {
+
+    public String getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    @Column(name = "first_name", nullable = false)
+
     public String getFirstName() {
         return firstName;
     }
@@ -51,7 +45,7 @@ public class Employee {
         this.firstName = firstName;
     }
 
-    @Column(name = "last_name", nullable = false)
+
     public String getLastName() {
         return lastName;
     }
@@ -59,7 +53,7 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    @Column(name = "email_address", nullable = false)
+
     public String getEmailId() {
         return emailId;
     }
